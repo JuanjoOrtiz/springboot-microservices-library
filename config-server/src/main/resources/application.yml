@@ -3,15 +3,15 @@ spring:
         name: config-server
     profiles:
         active: default
-        cloud:
-            config:
-                server:
-                    git:
-                        uri: https://github.com/JuanjoOrtiz/configurations-library.git
-                        default-label: main
-                        clone-on-start: true
-                        username: JuanjoOrtiz
-                        password: ${GIT_TOKEN}
+    cloud:
+        config:
+            server:
+                git:
+                    uri: https://github.com/JuanjoOrtiz/configurations-library.git
+                    default-label: main
+                    clone-on-start: true
+                    username: JuanjoOrtiz
+                    password: ${GIT_TOKEN}
 server:
     port: 7777
 eureka:
