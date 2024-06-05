@@ -6,11 +6,12 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Table;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 
 import java.util.Date;
 @Data
-@Table(name = "members")
+@Document(collation = "members")
 public class Member {
 
     @Id
