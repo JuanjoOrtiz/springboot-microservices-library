@@ -1,0 +1,45 @@
+services:
+  mysql:
+    image: mysql
+    restart: always
+    container_name: books
+    hostname: localhost
+    ports:
+      - 3306:3306
+    environment:
+       MYSQL_ROOT_PASSWORD: 'root'
+       MYSQL_DATABASE: 'books'
+       MYSQL_USER: 'book'
+       MYSQL_PASSWORD: '12345'
+    volumes:
+      - sqldata:/var/lib/mysql
+
+  postgres:
+    image: postgres
+    container_name: loans
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_DB: 'loans'
+      POSTGRES_USER: 'loan'
+      POSTGRES_PASSWORD: '12345'
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  mongodb:
+    image: mongo
+    container_name: members
+    restart: always
+    ports:
+     - 27017:27017
+    environment:
+     MONGO_INITDB_DATABASE: 'members'
+     MONGO_INITDB_ROOT_USERNAME: 'member'
+     MONGO_INITDB_ROOT_PASSWORD: '12345'
+    volumes:
+      - mongodata:/data/db
+volumes:
+  sqldata:
+  pgdata:
+  mongodata:
