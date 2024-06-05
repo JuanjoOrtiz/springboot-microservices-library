@@ -2,19 +2,16 @@ version: '3.8'
 
 services:
 
-  mongo:
-    image: mongo:latest
-    restart: always
-    container_name: mongodb
-    hostname: localhost
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: member
-      MONGO_INITDB_ROOT_PASSWORD: 12345
-    ports:
-      - 27017:27017
-    volumes:
-      - mongo_data:/data/db
-      - mongo_logs:/var/log/mongodb
-volumes:
-  mongo_data:
-  mongo_logs:
+    members:
+      image: postgres
+      container_name: members
+      restart: always
+      volumes:
+        - ./sql/create_schema.sql:/docker-entrypoint-initdb.d/create_schema.sql
+        - ./sql/data.sql:/docker-entrypoint-initdb.d/data.sql
+      environment:
+        POSTGRES_DB: 'members'
+        POSTGRES_USER: 'member'
+        POSTGRES_PASSWORD: '12345'
+      ports:
+        - '5432:5432'
