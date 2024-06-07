@@ -2,22 +2,22 @@ spring:
   application:
     name: loans
   datasource:
-    url: ${spring.datasource.url}
-    username: ${spring.datasource.username}
-    password: ${spring.datasource.password}
-    driverClassName: ${spring.datasource.driverClassName}
+    url: '${spring.datasource.url}'
+    username: '${spring.datasource.username}'
+    password: '${spring.datasource.password}'
+    driverClassName: '${spring.datasource.driverClassName}'
     hikari:
-      maximum-pool-size: ${spring.hikari.maximum-pool-size}
-      connection-timeout: ${spring.hikari.connection-timeout}
-    profiles:
-      default: default
-    config:
-      import: "optional:configserver:http://localhost:7777"
-    jpa:
-      hibernate:
-        ddl-auto: update
-        show-sql: true
+      maximum-pool-size: '${spring.hikari.maximum-pool-size}'
+      connection-timeout: '${spring.hikari.connection-timeout}'
+  jpa:
+    hibernate:
+      ddl-auto: update
+      show-sql: true
+
+  profiles:
+    default: default
+  config:
+    import: "optional:configserver:http://localhost:7777"
+
 server:
-  servlet:
-    context-path: /companies-crud
   port: 8082

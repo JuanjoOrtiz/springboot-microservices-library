@@ -25,7 +25,7 @@ import java.util.stream.Collectors;
 public class LoanServiceImpl implements LoanService {
 
     private final LoanRepository loanRepository;
-/*    private final MemberRepository memberRepository;
+/*   private final  MemberRepository memberRepository;
     private final BookRepository bookRepository;*/
     private final ModelMapper modelMapper;
 
