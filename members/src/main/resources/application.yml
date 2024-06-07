@@ -3,11 +3,12 @@ spring:
         name: members
     data:
         mongodb:
-        host: ${spring.data.mongodb.host}
-        port: ${spring.data.mongodb.port}
-        database: ${spring.data.mongodb.database}
-        username: ${spring.data.mongodb.username}
-        password: ${spring.data.mongodb.password}
+            database: ${spring.data.mongodb.database}
+            host: ${spring.data.mongodb.host}
+            port: ${spring.data.mongodb.port}
+            username: ${spring.data.mongodb.username}
+            password: ${spring.data.mongodb.password}
+            authentication-database: ${spring.data.mongodb.authentication-database}
     hikari:
         maximum-pool-size: ${spring.hikari.maximum-pool-size}
         connection-timeout: ${spring.hikari.connection-timeout}
@@ -15,10 +16,10 @@ spring:
         default: default
     config:
         import: "optional:configserver:http://localhost:7777"
-        server:
-            servlet:
-                context-path: /members
-            port: 8083
+server:
+    servlet:
+        context-path: /members
+    port: 8083
 eureka:
     instance-id: '${spring.application.name}:${random.value}'
     client:
