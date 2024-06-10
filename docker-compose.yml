@@ -5,7 +5,7 @@ services:
     container_name: books
     hostname: localhost
     ports:
-      - 3306:3306
+      - 3307:3306
     environment:
        MYSQL_ROOT_PASSWORD: 'root'
        MYSQL_DATABASE: 'books'
@@ -13,6 +13,22 @@ services:
        MYSQL_PASSWORD: '12345'
     volumes:
       - sqldata:/var/lib/mysql
+
+  auth:
+    image: mysql
+    restart: always
+    container_name: auth
+    hostname: localhost
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_DATABASE: 'auth'
+      MYSQL_USER: 'auth'
+      MYSQL_PASSWORD: '12345'
+    volumes:
+      - sqldata-auth:/var/lib/mysql
+
 
   postgres:
     image: postgres
@@ -41,5 +57,6 @@ services:
       - mongodata:/data/db
 volumes:
   sqldata:
+  sqldata-auth:
   pgdata:
   mongodata:
